@@ -1,46 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # ¡Hola  !🙋🏻‍♂️
-# 
-# Te escribe Lisandro Saez, soy revisor de código en Tripleten y tengo el agrado de revisar el proyecto que entregaste.
-# 
-# Para simular la dinámica de un ambiente de trabajo, si veo algún error, en primer instancia solo los señalaré, dándote la oportunidad de encontrarlos y corregirlos por tu cuenta. En un trabajo real, el líder de tu equipo hará una dinámica similar. En caso de que no puedas resolver la tarea, te daré una información más precisa en la próxima revisión.
-# 
-# Encontrarás mis comentarios más abajo - **por favor, no los muevas, no los modifiques ni los borres**.
-# 
-# ¿Cómo lo voy a hacer? Voy a leer detenidamente cada una de las implementaciones que has llevado a cabo para cumplir con lo solicitado. Verás los comentarios de esta forma:
-# 
-# <div class="alert alert-block alert-success">
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Si todo está perfecto.
-# </div>
-# 
-# 
-# <div class="alert alert-block alert-warning">
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Si tu código está bien pero se puede mejorar o hay algún detalle que le hace falta. Se aceptan uno o dos comentarios de este tipo en el borrador, pero si hay más, deberías hacer las correcciones. Es como una tarea de prueba al solicitar un trabajo: muchos pequeños errores pueden hacer que un candidato sea rechazado.
-# </div>
-# 
-# <div class="alert alert-block alert-danger">
-# 
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Si de pronto hace falta algo o existe algún problema con tu código o conclusiones.
-# </div>
-# 
-# Puedes responderme de esta forma (no te preocupes, no es obligatorio):
-# 
-# <div class="alert alert-block alert-info">
-# <b>Respuesta del estudiante</b> <a class="tocSkip"></a>
-# 
-# Hola, muchas gracias por tus comentarios y la revisión.
-# </div>
-# 
-# ¡Empecemos!
-
 # # Ice videogames seller
 # 
 # La tienda online Ice vende videojuegos por todo el mundo. Las reseñas de usuarios y expertos, los géneros, las plataformas y los datos históricos sobre las ventas de juegos están disponibles en fuentes abiertas. A la empresa le gustaría que identificar patrones que determinen si un juego tiene éxito o no. Esto le permitirá detectar proyectos prometedores y planificar campañas publicitarias a futuro.
@@ -83,21 +40,10 @@ from scipy import stats as st
 df_datagames=pd.read_csv("/datasets/games.csv")
 print(df_datagames.info())
 
-
-# 
-# 
-# <div class="alert alert-block alert-success">
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Bien hecho! Siempre es importante que pasemos el set de datos que estamos usando a `DataFrame`!</div>
-# 
-# 
-
 # In[3]:
 
 
 print(df_datagames.head())
-
 
 # # Preprocesamiento
 
@@ -195,9 +141,6 @@ print(df_datagames[df_datagames['name']=='NoData'])
 # 
 # <div class="alert alert-block alert-success">
 # <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Te felicito por haber eliminado los NaNs! Es una parte fundamental del análisis de datos!
-# </div>
 
 # 2.3.5 Valores Ausentes Columna "na_sales"
 
@@ -300,24 +243,14 @@ plt.legend(['Year', 'Videogames sold'])
 plt.show()
 
 
-# 
-# 
-# <div class="alert alert-block alert-success">
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Gran trabajo utilizando `groupby()`!</div>
-# 
-# 
-
 # Comentarios:
 # Se observan ciclos constantes aproximadamente 5 años donde el lanzamiento de videojuegos repunta. En 2005 hubo un incremento altamente mayor en comparación con otros años. Del 2005 al 2010 se observan una cantidad mayor de lanzamientos en ese periodo de 5 años a comparación de otros lustros.
 
-# 
+ 
 
 # 3.2 Juegos Lanzados por plataforma y año
 
 # In[22]:
-
 
 df_datagames_byplatform=df_datagames.groupby(['platform'])['total'].sum().sort_values(ascending=False)
 print("Top 5",df_datagames_byplatform.head(5))
@@ -364,15 +297,6 @@ plt.xlim(1995,2020)
 plt.show()
 
 
-# 
-# 
-# <div class="alert alert-block alert-success">
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Te felicito por haber recordado resetear el índice después de modificar la tabla!</div>
-# 
-# 
-
 # Comentarios:
 # Se observan periodos de 10 años de ventas aproxidamente desde el lanzamiento de una nueva plataforma hasta que lo descontinuan. En los años intermedios (3 años - 6 años) se observan los picos de ventas a exception de la plataforma Wii. Apartir del 2000 se obtiene mayor información para crear un modelo para el 2017. Del 2000 para atras son juegos de otro estilo.
 
@@ -403,16 +327,6 @@ plt.figure(figsize=(10, 10))
 plt.title('Global sales by platform')
 sns.boxplot(data=df_globalsales, x='platform', y='total')
 
-
-# 
-# 
-# <div class="alert alert-block alert-success">
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Tus gráficos se ven increíbles y se nota el trabajo que has invertido en ellos. Felicitaciones!</div>
-# 
-# 
-# 
 
 # Comentarios: Al ser bastantes plataformas y las diferencias son significativamente grandes por lo que no se alcanza a visualizar las cajas, se hara un boxplot del top 4 con más ventas.
 
@@ -1020,12 +934,6 @@ print()
 
 # Comentarios:Rechazamos la hipótesis nula. Por lo cual las calificaciones de los usuarios es diferente por género son diferentes. 
 
-# 
-# <div class="alert alert-block alert-success">
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Grandísimo trabajo con el análisis de hipótesis. Felicitaciones!</div>
-# 
 
 # # Conclusiones
 
@@ -1131,10 +1039,5 @@ print()
 # 
 # Despues de este análisis podemos observar que cada región tiene sus caracteristicas que se pueden tomar decisiones importantes para potenciar las ventas en los siguientes años que puedan apoyar en temas operativos, financieros y logisticos.
 
-# <div class="alert alert-block alert-success">
-# <b>Comentario del revisor</b> <a class="tocSkip"></a>
-# 
-# Realmente tus conclusiones demuestran tu expertise en el tema, te felicito por haberte esforzado tanto en este sprint. Excelente trabajo!</div>
-# 
 
 # MP Ortiz
